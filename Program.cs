@@ -25,7 +25,7 @@ static CommandLineBuilder BuildCommandLine()
         {
             new Command("since")
             {
-                new Argument<TimeSpan>("since", x => TimeSpan.Parse(x.Tokens.FirstOrDefault()?.Value??string.Empty))
+                new Argument<TimeSpan>("since")
                 {
                     Arity = ArgumentArity.ExactlyOne
                 }
@@ -58,7 +58,7 @@ static CommandLineBuilder BuildCommandLine()
         }
     };
 
-    root.AddGlobalOption(new Option<bool>("--force", "Force the synchronization"));
+    root.AddGlobalOption(new Option<bool>("--force", "Force the job to run"));
     root.AddGlobalOption(new Option<bool>("--dry-run", "Dry run"));
 
     return new CommandLineBuilder(root);
